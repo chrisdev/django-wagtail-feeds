@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/chrisdev/wagtail_feeds
+    $ git clone git://github.com/chrisdev/django-wagtail-feeds
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/chrisdev/wagtail_feeds/tarball/master
+    $ curl  -OL https://github.com/chrisdev/django-wagtail-feeds/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/chrisdev/wagtail_feeds
-.. _tarball: https://github.com/chrisdev/wagtail_feeds/tarball/master
+.. _Github repo: https://github.com/chrisdev/wdjango-wagtail-feeds
+.. _tarball: https://github.com/chrisdev/django-wagtail-feeds/tarball/master
