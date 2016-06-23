@@ -24,7 +24,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Christopher Clarke",
     author_email='cclarke@chrisdev.com',
-    url='https://github.com/chrisdev/wagtail_feeds',
+    url='https://github.com/chrisdev/django-wagtail-feeds',
     packages=[
         'wagtail_feeds',
     ],
