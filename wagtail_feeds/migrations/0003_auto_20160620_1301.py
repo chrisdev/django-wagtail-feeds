@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('feeds', '0002_auto_20160620_1155'),
+        ('wagtail_feeds', '0002_auto_20160620_1155'),
     ]
 
     operations = [
