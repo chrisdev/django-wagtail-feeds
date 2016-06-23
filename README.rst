@@ -6,35 +6,30 @@ Django Wagtail Feeds
 .. image:: https://img.shields.io/pypi/v/wagtail_feeds.svg
         :target: https://pypi.python.org/pypi/wagtail_feeds
 
-.. image:: https://img.shields.io/travis/chrisdev/wagtail_feeds.svg
-        :target: https://travis-ci.org/chrisdev/wagtail_feeds
-
 .. image:: https://readthedocs.org/projects/wagtail-feeds/badge/?version=latest
         :target: https://wagtail-feeds.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/chrisdev/cookiecutter-django/shield.svg
-     :target: https://pyup.io/repos/github/chrisdev/wagtail_feeds/
-     :alt: Updates
-
-
 Support RSS Feeds, Facebook Instant Articles and Apple News
 
+Syndication feeds come in two flavors:
 
-* Free software: MIT license
-* Documentation: https://wagtail-feeds.readthedocs.io.
+ - **BasicFeed** -  A standard `RSS V 2.0.1`_ feed designed to be used without 
+   item enclosures.
 
+ - **ExtendedFeed** - An RSS V2/Atom Feed with support for item  
+   enclosures such as images or video. Use this if when want to integrate your
+   feed with services like MailChimp or Flipboard.
 
-Features
---------
+Instructions
+------------
 
-* TODO
+- Install Django Wagtail Feeds::
+    
+    pip install wagtail_feeds
+    
+- Add Feed settings in the Wagtail admin
 
-Credits
----------
+    
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
 
