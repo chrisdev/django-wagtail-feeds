@@ -10,11 +10,13 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    # TODO: put package requirements here
+    "Django>=1.7,<1.11",
+    "Wagtail>=1.4",
 ]
 
 test_requirements = [
-    # TODO: put package test requirements here
+    "Django>=1.8,<1.11",
+    "Wagtail>=1.4",
 ]
 
 setup(
@@ -48,6 +50,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
     ],
-    test_suite='tests',
+    test_suite='runtests.runtests',
     tests_require=test_requirements
 )

@@ -1,0 +1,4 @@
+[run]
+source = wagtail_feeds
+omit = wagtail_feeds/migrations/*
+branch = 1
