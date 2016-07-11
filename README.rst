@@ -21,20 +21,24 @@ Support RSS Feeds, Facebook Instant Articles and Apple News. Syndication feeds c
 Getting Started
 ---------------
 
-To install Django Wagtail Feeds, run this command in your terminal::
+To use Django Wagtail Feeds in a project::
 
-    $ pip install wagtail_feeds
+    import wagtail_feeds
     
 Run migrations for Wagtail feeds::
 
     ./manage.py migrate wagtail_feeds
     
-To use Django Wagtail Feeds in a project::
+Add Feed settings in the Wagtail admin
 
-    import wagtail_feeds
+.. figure:: admin.png
+   :alt: Wagtail admin
    
-Add urls for feed::
+.. figure:: feed-settings.png
+   :alt: Feed Settings
 
+Finally reference it in the url.py ::
+    
     from wagtail_feeds.feeds import BasicFeed, ExtendedFeed
     
     url(r'^blog/feed/basic$', BasicFeed(), name='basic_feed'),
