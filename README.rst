@@ -21,7 +21,7 @@ Support RSS Feeds, Facebook Instant Articles and Apple News. Syndication feeds c
 Getting Started
 ---------------
 
-To install Django Wagtail Feeds, run this command in your terminal:
+To install Django Wagtail Feeds, run this command in your terminal::
 
     $ pip install wagtail_feeds
     
@@ -32,12 +32,6 @@ Run migrations for Wagtail feeds::
 To use Django Wagtail Feeds in a project::
 
     import wagtail_feeds
-
-    .. figure:: admin.png
-       :alt: Wagtail admin
-       
-    .. figure:: feed-settings.png
-       :alt: Feed Settings
    
 Add urls for feed::
 
