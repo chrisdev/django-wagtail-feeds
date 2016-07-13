@@ -10,17 +10,17 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    "Django>=1.7,<1.11",
+    "Django>=1.7,<1.10",
     "Wagtail>=1.4",
 ]
 
 test_requirements = [
-    "Django>=1.8,<1.11",
+    "Django>=1.8,<1.10",
     "Wagtail>=1.4",
 ]
 
 setup(
-    name='wagtail_feeds',
+    name='django-wagtail-feeds',
     version='0.0.1',
     description="Support RSS Feeds, Facebook Instant Articles and Apple News",
     long_description=readme + '\n\n' + history,
