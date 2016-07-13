@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.apps import apps
 from django.core.urlresolvers import reverse
 
-from wagtail_feeds.models import FeedsAppSettings
+from wagtail_feeds.models import RSSFeedsSettings
 
 from .models import HomePage, BlogPage
 
@@ -30,7 +30,7 @@ class WagtailFeedTests(TestCase,):
         site = Site.objects.create(
             hostname='localhost', root_page=homepage, is_default_site=True)
 
-        FeedsAppSettings.objects.create(site=site, feed_app_label='tests',
+        RSSFeedsSettings.objects.create(site=site, feed_app_label='tests',
                                         feed_model_name='BlogPage',
                                         feed_title='Test Feed',
                                         feed_link="https://example.com",
@@ -55,7 +55,7 @@ class WagtailFeedTests(TestCase,):
         )
 
     def test_settings_values(self):
-        feed_settings = FeedsAppSettings.objects.all()[0]
+        feed_settings = RSSFeedsSettings.objects.all()[0]
         self.assertEqual(feed_settings.feed_app_label, 'tests')
         self.assertEqual(feed_settings.feed_model_name, 'BlogPage')
         self.assertEqual(feed_settings.feed_title, 'Test Feed')
