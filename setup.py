@@ -21,7 +21,7 @@ test_requirements = [
 
 setup(
     name='django-wagtail-feeds',
-    version='0.0.1',
+    version='0.0.2',
     description="Support RSS Feeds, Facebook Instant Articles and Apple News",
     long_description=readme + '\n\n' + history,
     author="Christopher Clarke",
