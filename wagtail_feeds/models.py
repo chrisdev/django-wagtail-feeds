@@ -6,7 +6,7 @@ from wagtail.contrib.settings.models import BaseSetting, register_setting
 
 
 @register_setting
-class FeedsAppSettings(BaseSetting):
+class RSSFeedsSettings(BaseSetting):
     feed_app_label = models.CharField(
         max_length=255, help_text='blog App whose Feed is to be generated',
         null=True, blank=True)

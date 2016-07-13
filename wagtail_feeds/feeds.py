@@ -14,12 +14,12 @@ except ImportError:
     from urllib.parse import urljoin
 from django.utils import feedgenerator
 
-from .models import FeedsAppSettings
+from .models import RSSFeedsSettings
 
-feed_app_settings = FeedsAppSettings.for_site(
+feed_app_settings = RSSFeedsSettings.for_site(
     site=Site.objects.get(is_default_site=True))
-feed_app_label = feed_app_settings.feed_app_label
-feed_model_name = feed_app_settings.feed_model_name
+feed_app_label = RSSFeedsSettings.feed_app_label
+feed_model_name = RSSFeedsSettings.feed_model_name
 try:
     feed_model = apps.get_model(app_label=feed_app_label,
                                 model_name=feed_model_name)
