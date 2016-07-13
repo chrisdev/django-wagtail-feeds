@@ -1,11 +1,13 @@
 Django Wagtail Feeds
 ====================
-
+.. image:: https://travis-ci.org/chrisdev/django-wagtail-feeds.svg?branch=master
+    :target: https://travis-ci.org/chrisdev/django-wagtail-feeds
+    
 .. image:: https://img.shields.io/pypi/v/wagtail_feeds.svg
-        :target: https://pypi.python.org/pypi/wagtail_feeds
+        :target: https://pypi.python.org/pypi/django-wagtail-feeds
 
 .. image:: https://readthedocs.org/projects/wagtail-feeds/badge/?version=latest
-        :target: https://wagtail-feeds.readthedocs.io/en/latest/?badge=latest
+        :target: https://django-wagtail-feeds.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 Support RSS Feeds, Facebook Instant Articles and Apple News. Syndication feeds come in two flavors:
