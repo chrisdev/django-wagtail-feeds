@@ -35,10 +35,10 @@ Run migrations for Wagtail feeds::
     
 Add Feed settings in the Wagtail admin
 
-.. figure:: admin.png
+.. figure:: http://i.imgur.com/aNp1VBg.png
    :alt: Wagtail admin
    
-.. figure:: feed-settings.png
+.. figure:: http://i.imgur.com/oRZRici.png
    :alt: Feed Settings
 
 Finally reference it in the url.py ::
