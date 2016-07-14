@@ -1,13 +1,6 @@
 Django Wagtail Feeds
 ====================
 
-.. image:: https://img.shields.io/pypi/v/wagtail_feeds.svg
-        :target: https://pypi.python.org/pypi/wagtail_feeds
-
-.. image:: https://readthedocs.org/projects/wagtail-feeds/badge/?version=latest
-        :target: https://wagtail-feeds.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
 Support RSS Feeds, Facebook Instant Articles and Apple News. Syndication feeds come in two flavors:
 
 - **BasicFeed** -  A standard `RSS V 2.0.1`_ feed designed to be used without item enclosures.
@@ -31,10 +24,10 @@ Run migrations for Wagtail feeds::
     
 Add Feed settings in the Wagtail admin
 
-.. figure:: admin.png
+.. figure:: http://i.imgur.com/aNp1VBg.png
    :alt: Wagtail admin
    
-.. figure:: feed-settings.png
+.. figure:: http://i.imgur.com/oRZRici.png
    :alt: Feed Settings
 
 Finally reference it in the url.py ::
