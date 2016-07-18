@@ -16,10 +16,14 @@ from django.utils import feedgenerator
 
 from .models import RSSFeedsSettings
 
-feed_app_settings = RSSFeedsSettings.for_site(
-    site=Site.objects.get(is_default_site=True))
-feed_app_label = feed_app_settings.feed_app_label
-feed_model_name = feed_app_settings.feed_model_name
+try:
+    feed_app_settings = RSSFeedsSettings.for_site(
+        site=Site.objects.get(is_default_site=True))
+    feed_app_label = feed_app_settings.feed_app_label
+    feed_model_name = feed_app_settings.feed_model_name
+except:
+    feed_app_settings = None
+
 try:
     feed_model = apps.get_model(app_label=feed_app_label,
                                 model_name=feed_model_name)
@@ -59,15 +63,16 @@ class BasicFeed(Feed):
     feed_type = feedgenerator.Rss201rev2Feed
 
     # The RSS information that gets shown at the top of the feed.
-    title = feed_app_settings.feed_title
-    link = feed_app_settings.feed_link
-    description = feed_app_settings.feed_description
+    if feed_app_settings is not None:
+        title = feed_app_settings.feed_title
+        link = feed_app_settings.feed_link
+        description = feed_app_settings.feed_description
 
-    author_email = feed_app_settings.feed_author_email
-    author_link = feed_app_settings.feed_author_link
+        author_email = feed_app_settings.feed_author_email
+        author_link = feed_app_settings.feed_author_link
 
-    item_description_field = feed_app_settings.feed_item_description_field
-    item_content_field = feed_app_settings.feed_item_content_field
+        item_description_field = feed_app_settings.feed_item_description_field
+        item_content_field = feed_app_settings.feed_item_content_field
 
     def items(self):
         return feed_model.objects.order_by('-date').live()
@@ -88,15 +93,16 @@ class ExtendedFeed(Feed):
     feed_type = CustomFeedGenerator
 
     # The RSS information that gets shown at the top of the feed.
-    title = feed_app_settings.feed_title
-    link = feed_app_settings.feed_link
-    description = feed_app_settings.feed_description
+    if feed_app_settings is not None:
+        title = feed_app_settings.feed_title
+        link = feed_app_settings.feed_link
+        description = feed_app_settings.feed_description
 
-    author_email = feed_app_settings.feed_author_email
-    author_link = feed_app_settings.feed_author_link
+        author_email = feed_app_settings.feed_author_email
+        author_link = feed_app_settings.feed_author_link
 
-    item_description_field = feed_app_settings.feed_item_description_field
-    item_content_field = feed_app_settings.feed_item_content_field
+        item_description_field = feed_app_settings.feed_item_description_field
+        item_content_field = feed_app_settings.feed_item_content_field
 
     def get_site_url(self):
         site = Site.objects.get(is_default_site=True)
