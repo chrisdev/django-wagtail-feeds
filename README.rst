@@ -18,7 +18,7 @@ Getting Started
 
 To use Django Wagtail Feeds in a project::
 
-    pip install wagtail_feeds
+    pip install django-wagtail-feeds
     
 Remember to add ``wagtail_feeds`` to installed apps in settings file.
     
