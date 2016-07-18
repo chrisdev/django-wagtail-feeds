@@ -10,13 +10,15 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    "Django>=1.7,<1.10",
+    "Django>=1.8,<1.10",
     "Wagtail>=1.4",
+    "html5lib==0.999999",
 ]
 
 test_requirements = [
     "Django>=1.8,<1.10",
     "Wagtail>=1.4",
+    "html5lib==0.999999",
 ]
 
 setup(
