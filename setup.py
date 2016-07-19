@@ -3,6 +3,8 @@
 
 from setuptools import setup
 
+version = __import__('wagtail_feeds').__version__
+
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
@@ -23,7 +25,7 @@ test_requirements = [
 
 setup(
     name='django-wagtail-feeds',
-    version='0.0.2',
+    version=version,
     description="Support RSS Feeds, Facebook Instant Articles and Apple News",
     long_description=readme + '\n\n' + history,
     author="Christopher Clarke",
