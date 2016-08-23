@@ -143,7 +143,8 @@ class ExtendedFeed(Feed):
         content = expand_db_html(getattr(item, self.item_content_field))
         soup = BeautifulSoup(content, 'html.parser')
         for img_tag in soup.findAll('img'):
-            img_tag['src'] = urljoin(self.get_site_url(), img_tag['src'])
+            if img_tag.has_attr('src'):
+                img_tag['src'] = urljoin(self.get_site_url(), img_tag['src'])
 
         return {
             'image': image_complete_url if feed_image else "",
