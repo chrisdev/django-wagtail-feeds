@@ -141,9 +141,9 @@ class ExtendedFeed(Feed):
             image_complete_url = urljoin(self.get_site_url(), img.url)
 
         content_field = getattr(item, self.item_content_field)
-        if content_field.raw_text:
+        try:
             content = expand_db_html(content_field)
-        else:
+        except:
             content = content_field.__html__()
 
         soup = BeautifulSoup(content, 'html.parser')
