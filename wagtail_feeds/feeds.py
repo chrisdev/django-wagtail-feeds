@@ -44,7 +44,7 @@ class CustomFeedGenerator(Rss201rev2Feed):
         handler.startElement(u"content:encoded", {})
 
         content = '<![CDATA['
-        if use_feed_image and item['feed_image_exist']:
+        if use_feed_image and item['image'] != "":
             content += '<img src="%s"><hr>' % (item['image'])
         content += item['content']
         content += ']]>'
@@ -141,6 +141,8 @@ class ExtendedFeed(Feed):
                 img = feed_image.get_rendition(filter)
 
                 image_complete_url = urljoin(self.get_site_url(), img.url)
+            else:
+                image_complete_url = ""
 
         content_field = getattr(item, self.item_content_field)
         try:
@@ -161,12 +163,9 @@ class ExtendedFeed(Feed):
             'content': soup.prettify(formatter="html"),
         }
 
-        if use_feed_image and feed_image:
+        if use_feed_image:
             fields_to_add['image'] = image_complete_url
-
-            if feed_image:
-                fields_to_add['feed_image_exist'] = True
-            else:
-                fields_to_add['feed_image_exist'] = False
+        else:
+            fields_to_add['image'] = ""
 
         return fields_to_add
