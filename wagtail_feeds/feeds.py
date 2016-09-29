@@ -164,9 +164,9 @@ class ExtendedFeed(Feed):
         if use_feed_image and feed_image:
             fields_to_add['image'] = image_complete_url
 
-        if feed_image:
-            fields_to_add['feed_image_exist'] = True
-        else:
-            fields_to_add['feed_image_exist'] = False
+            if feed_image:
+                fields_to_add['feed_image_exist'] = True
+            else:
+                fields_to_add['feed_image_exist'] = False
 
         return fields_to_add
