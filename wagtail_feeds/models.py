@@ -31,3 +31,6 @@ class RSSFeedsSettings(BaseSetting):
     feed_item_content_field = models.CharField(
         max_length=255, help_text='Content Field for feed item',
         null=True, blank=True)
+    feed_image_in_content = models.BooleanField(
+        help_text='Add feed image to content encoded field',
+        default=True)
