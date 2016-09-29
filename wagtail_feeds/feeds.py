@@ -21,6 +21,7 @@ try:
         site=Site.objects.get(is_default_site=True))
     feed_app_label = feed_app_settings.feed_app_label
     feed_model_name = feed_app_settings.feed_model_name
+    use_feed_image = feed_app_settings.feed_image_in_content
 except:
     feed_app_settings = None
 
@@ -43,7 +44,7 @@ class CustomFeedGenerator(Rss201rev2Feed):
         handler.startElement(u"content:encoded", {})
 
         content = '<![CDATA['
-        if item['image'] != "":
+        if use_feed_image:
             content += '<img src="%s"><hr>' % (item['image'])
         content += item['content']
         content += ']]>'
@@ -133,12 +134,13 @@ class ExtendedFeed(Feed):
         the 'add_item' call of the feed generator.
         Add the fields of the item, to be used by the custom feed generator.
         """
-        feed_image = item.feed_image
-        if feed_image:
-            filter, _ = Filter.objects.get_or_create(spec='width-1200')
-            img = feed_image.get_rendition(filter)
+        if use_feed_image:
+            feed_image = item.feed_image
+            if feed_image:
+                filter, _ = Filter.objects.get_or_create(spec='width-1200')
+                img = feed_image.get_rendition(filter)
 
-            image_complete_url = urljoin(self.get_site_url(), img.url)
+                image_complete_url = urljoin(self.get_site_url(), img.url)
 
         content_field = getattr(item, self.item_content_field)
         try:
@@ -147,11 +149,19 @@ class ExtendedFeed(Feed):
             content = content_field.__html__()
 
         soup = BeautifulSoup(content, 'html.parser')
+        # Remove style attribute to remove large botton padding
+        for div in soup.find_all("div", {'class':'responsive-object'}): 
+            del div['style']
+        # Add site url to image source
         for img_tag in soup.findAll('img'):
             if img_tag.has_attr('src'):
                 img_tag['src'] = urljoin(self.get_site_url(), img_tag['src'])
 
-        return {
-            'image': image_complete_url if feed_image else "",
-            'content': soup.prettify(formatter="html")
+        fields_to_add = {
+            'content': soup.prettify(formatter="html"),
         }
+
+        if use_feed_image:
+            fields_to_add['image'] = image_complete_url
+
+        return fields_to_add
