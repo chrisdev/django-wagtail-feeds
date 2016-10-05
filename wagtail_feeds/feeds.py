@@ -10,7 +10,7 @@ from wagtail.wagtailcore.rich_text import expand_db_html
 from bs4 import BeautifulSoup
 try:
     from urlparse import urljoin
-except ImportError:
+except ImportError: # pragma: no cover
     from urllib.parse import urljoin
 from django.utils import feedgenerator
 
@@ -22,13 +22,13 @@ try:
     feed_app_label = feed_app_settings.feed_app_label
     feed_model_name = feed_app_settings.feed_model_name
     use_feed_image = feed_app_settings.feed_image_in_content
-except:
+except: # pragma: no cover
     feed_app_settings = None
 
 try:
     feed_model = apps.get_model(app_label=feed_app_label,
                                 model_name=feed_model_name)
-except:
+except: # pragma: no cover
     feed_model = None
 
 
