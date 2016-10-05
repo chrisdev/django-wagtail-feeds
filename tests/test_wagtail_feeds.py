@@ -1,10 +1,13 @@
+import json
 from django.test import TestCase
 from django.apps import apps
 from django.core.urlresolvers import reverse
 
+from wagtail.wagtailcore.rich_text import RichText
+
 from wagtail_feeds.models import RSSFeedsSettings
 
-from .models import HomePage, BlogPage
+from .models import HomePage, BlogPage, BlogStreamPage
 
 
 class WagtailFeedTests(TestCase,):
@@ -54,6 +57,23 @@ class WagtailFeedTests(TestCase,):
             depth=2,
         )
 
+        # Create Stream Field Blog Page
+
+
+        stream_page = BlogStreamPage.objects.create(
+            title="BlogStreamPage",
+            intro="Welcome to Blog Stream Page",
+            body=[
+            ('heading', 'foo'),
+            ('paragraph', RichText('<p>Rich text</p>'))],
+            date="2016-08-30",
+            slug='blog-stream-post',
+            url_path="/home-page/blog-stream-post/",
+            content_type=homepage_content_type,
+            path='00010003',
+            depth=3,
+        )
+
     def test_settings_values(self):
         feed_settings = RSSFeedsSettings.objects.all()[0]
         self.assertEqual(feed_settings.feed_app_label, 'tests')
@@ -66,6 +86,13 @@ class WagtailFeedTests(TestCase,):
         blog = BlogPage.objects.all()[0]
         self.assertEqual(blog.intro, 'Welcome to Blog')
         self.assertEqual(blog.body, 'This is the body of blog')
+
+    def test_stream_page(self):
+        stream_blogpage = BlogStreamPage.objects.all()[0]
+        body = stream_blogpage.body
+        self.assertEqual(body[0].value, 'foo')
+        self.assertIsInstance(body[1].value, RichText)
+        self.assertEqual(body[1].value.source, '<p>Rich text</p>')
 
     def test_rss_basic_generation(self):
         response = self.client.get(reverse('basic_feed'))
