@@ -2,6 +2,10 @@
 History
 =======
 
+0.0.5 (2016-10-05)
+------------------
+* Added tests for StreamFields
+
 0.0.4 (2016-09-29)
 -------------------
 * The `ExtendedFeed` now supports content fields based on StreamFields
