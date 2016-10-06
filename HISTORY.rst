@@ -2,6 +2,10 @@
 History
 =======
 
+0.0.6 (2016-10-06)
+------------------
+* More comprehensive test coverage  
+
 0.0.5 (2016-10-05)
 ------------------
 * Added tests for StreamFields
