@@ -8,6 +8,13 @@ To install Django Wagtail Feeds, run this command in your terminal:
 
     $ pip install wagtail_feeds
 
+`django-wagtail-feeds` has a dependency on `wagtail settings` app. You must add ``wagtail.contrib.settings`` to your INSTALLED_APPS::
+
+    INSTALLED_APPS += [
+        'wagtail.contrib.settings',
+        'wagtail_feeds',
+    ]
+
 This is the preferred method to install Django Wagtail Feeds, as it will always install the most recent stable release. If you don't have `pip`_ installed, this `Python installation guide`_ can guide you through the process.
 
 .. _pip: https://pip.pypa.io
