@@ -13,12 +13,12 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     "Django>=1.8",
-    "Wagtail>=1.4",
+    "Wagtail>=1.8",
 ]
 
 test_requirements = [
     "Django>=1.8",
-    "Wagtail>=1.4",
+    "Wagtail>=1.8",
 ]
 
 setup(

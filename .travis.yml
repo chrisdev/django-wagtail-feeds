@@ -6,11 +6,9 @@ python:
     - 3.5
 
 env:
-  - TOXENV=py27-django17
   - TOXENV=py27-django18
   - TOXENV=py27-django19
   - TOXENV=py27-django_trunk
-  - TOXENV=py34-django17
   - TOXENV=py34-django18
   - TOXENV=py34-django19
   - TOXENV=py34-django_trunk

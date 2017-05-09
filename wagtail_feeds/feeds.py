@@ -1,7 +1,6 @@
 # Importing the syndication feed
 from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import Rss201rev2Feed
-from wagtail.wagtailimages.models import Filter
 from wagtail.wagtailcore.models import Site
 from datetime import datetime, time
 from django.utils.html import strip_tags
@@ -137,10 +136,9 @@ class ExtendedFeed(Feed):
         if use_feed_image:
             feed_image = item.feed_image
             if feed_image:
-                filter, _ = Filter.objects.get_or_create(spec='width-1200')
-                img = feed_image.get_rendition(filter)
-
-                image_complete_url = urljoin(self.get_site_url(), img.url)
+                image_complete_url = urljoin(
+                    self.get_site_url(), feed_image.file.url
+                )
             else:
                 image_complete_url = ""
 
@@ -152,7 +150,7 @@ class ExtendedFeed(Feed):
 
         soup = BeautifulSoup(content, 'html.parser')
         # Remove style attribute to remove large botton padding
-        for div in soup.find_all("div", {'class':'responsive-object'}): 
+        for div in soup.find_all("div", {'class': 'responsive-object'}):
             del div['style']
         # Add site url to image source
         for img_tag in soup.findAll('img'):
