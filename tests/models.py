@@ -25,6 +25,7 @@ class BlogPage(Page):
         related_name='+'
     )
 
+
 class BlogStreamPage(Page):
     intro = RichTextField()
     body = StreamField([
