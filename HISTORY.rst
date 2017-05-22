@@ -1,6 +1,10 @@
 =======
 History
 =======
+0.0.7 (2017-05-22)
+------------------
+* Support for Django 1.11 and Wagtail 1.10.1
+* Temporarily reduce test coverage
 
 0.0.6 (2016-10-06)
 ------------------
