@@ -3,7 +3,7 @@ Django Wagtail Feeds
 .. image:: https://travis-ci.org/chrisdev/django-wagtail-feeds.svg?branch=master
     :target: https://travis-ci.org/chrisdev/django-wagtail-feeds
 
-Support RSS Feeds, Facebook Instant Articles and Apple News. Syndication feeds come in two flavors:
+Support RSS Feeds, JSON Feed, Facebook Instant Articles and Apple News. Syndication feeds come in two flavors:
 
 - **BasicFeed** -  A standard `RSS V 2.0.1`_ feed designed to be used without item enclosures.
 
@@ -11,6 +11,14 @@ Support RSS Feeds, Facebook Instant Articles and Apple News. Syndication feeds c
    enclosures such as images or video. Use this if when want to integrate your feed with services like MailChimp or Flipboard.
 
 .. _`RSS V 2.0.1` : http://cyber.law.harvard.edu/rss/rss.html
+
+JSON feed come in two flavors:
+
+- **BasicJsonFeed** -  A standard `JSON feed`_ feed designed to be used without content html.
+
+- **ExtendedJsonFeed** - A JSON feed with support for content html in items.
+
+.. _`JSON feed` : https://jsonfeed.org/version/1
 
 
 Getting Started
@@ -43,10 +51,14 @@ Add Feed settings in the Wagtail admin
 
 Finally reference it in the url.py ::
 
-    from wagtail_feeds.feeds import BasicFeed, ExtendedFeed
+    from wagtail_feeds.feeds import BasicFeed, BasicJsonFeed, ExtendedFeed, ExtendedJsonFeed
 
     url(r'^blog/feed/basic$', BasicFeed(), name='basic_feed'),
     url(r'^blog/feed/extended$', ExtendedFeed(), name='extended_feed'),
+
+    # JSON feed
+    url(r'^blog/feed/basic.json$', BasicJsonFeed(), name='basic_json_feed'),
+    url(r'^blog/feed/extended.json$', ExtendedJsonFeed(), name='extended_json_feed'),
 
 
 Contributing
