@@ -7,14 +7,13 @@ Support RSS Feeds, JSON Feed, Facebook Instant Articles and Apple News. Syndicat
 
 - **BasicFeed** -  A standard `RSS V 2.0.1`_ feed designed to be used without item enclosures.
 
-- **ExtendedFeed** - An RSS V2/Atom Feed with support for item
-   enclosures such as images or video. Use this if when want to integrate your feed with services like MailChimp or Flipboard.
+- **ExtendedFeed** - An RSS V2/Atom Feed with support for item enclosures such as images or video. Use this if when want to integrate your feed with services like MailChimp or Flipboard.
 
 .. _`RSS V 2.0.1` : http://cyber.law.harvard.edu/rss/rss.html
 
 JSON feed come in two flavors:
 
-- **BasicJsonFeed** -  A standard `JSON feed`_ feed designed to be used without content html.
+- **BasicJsonFeed** -  A standard `JSON feed`_ designed to be used without content html.
 
 - **ExtendedJsonFeed** - A JSON feed with support for content html in items.
 
