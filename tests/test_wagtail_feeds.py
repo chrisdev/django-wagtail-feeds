@@ -7,6 +7,9 @@ from wagtail.wagtailcore.models import Collection, Page
 from wagtail.wagtailimages.tests.utils import Image, get_test_image_file
 
 from wagtail_feeds.models import RSSFeedsSettings
+from wagtail_feeds.feeds import (
+    BasicFeed, BasicJsonFeed, ExtendedFeed, ExtendedJsonFeed,
+)
 
 from .models import HomePage, BlogPage, BlogStreamPage
 
@@ -37,17 +40,19 @@ class WagtailFeedTests(TestCase):
         site = Site.objects.create(
             hostname='localhost', root_page=homepage, is_default_site=True)
 
-        RSSFeedsSettings.objects.create(site=site, feed_app_label='tests',
-                                        feed_model_name='BlogStreamPage',
-                                        feed_title='Test Feed',
-                                        feed_link="https://example.com",
-                                        feed_description="Test Description",
-                                        feed_item_description_field="intro",
-                                        feed_item_content_field="body",
-                                        feed_image_in_content=True)
+        RSSFeedsSettings.objects.create(
+            site=site, feed_app_label='tests',
+            feed_model_name='BlogStreamPage',
+            feed_title='Test Feed',
+            feed_link="https://example.com",
+            feed_description="Test Description",
+            feed_item_description_field="intro",
+            feed_item_content_field="body",
+            feed_image_in_content=True
+        )
 
         # Create collection for image
-        img_collection  = Collection.objects.create(name="test", depth=1)
+        img_collection = Collection.objects.create(name="test", depth=1)
 
         # Create an image
         image = Image.objects.create(
@@ -127,6 +132,74 @@ class WagtailFeedTests(TestCase):
             '<img alt="wagtail.jpg" height="500"' +
             ' src="/media/images/wagtail.original.jpg" width="1300">' +
             '</div>'
+        )
+
+    def test_basic_rss_feed(self):
+        blog = BlogPage.objects.first()
+        basic_rss_feed = BasicFeed()
+
+        self.assertEqual(
+            basic_rss_feed.item_title(blog),
+            blog.title
+        )
+        self.assertEqual(
+            basic_rss_feed.item_pubdate(blog).date(),
+            blog.date
+        )
+        self.assertEqual(
+            basic_rss_feed.item_link(blog),
+            blog.full_url
+        )
+
+    def test_basic_json_feed(self):
+        blog = BlogPage.objects.first()
+        basic_json_feed = BasicJsonFeed()
+
+        self.assertEqual(
+            basic_json_feed.item_title(blog),
+            blog.title
+        )
+        self.assertEqual(
+            basic_json_feed.item_pubdate(blog).date(),
+            blog.date
+        )
+        self.assertEqual(
+            basic_json_feed.item_link(blog),
+            blog.full_url
+        )
+
+    def test_extended_rss_feed(self):
+        blog = BlogPage.objects.first()
+        extended_rss_feed = ExtendedFeed()
+
+        self.assertEqual(
+            extended_rss_feed.item_title(blog),
+            blog.title
+        )
+        self.assertEqual(
+            extended_rss_feed.item_pubdate(blog).date(),
+            blog.date
+        )
+        self.assertEqual(
+            extended_rss_feed.item_link(blog),
+            blog.full_url
+        )
+
+    def test_extended_json_feed(self):
+        blog = BlogPage.objects.first()
+        extended_json_feed = ExtendedJsonFeed()
+
+        self.assertEqual(
+            extended_json_feed.item_title(blog),
+            blog.title
+        )
+        self.assertEqual(
+            extended_json_feed.item_pubdate(blog).date(),
+            blog.date
+        )
+        self.assertEqual(
+            extended_json_feed.item_link(blog),
+            blog.full_url
         )
 
     #def test_rss_basic_generation(self):
