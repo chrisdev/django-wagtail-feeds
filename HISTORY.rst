@@ -1,6 +1,15 @@
 =======
 History
 =======
+0.0.8 (2017-06-26)
+------------------
+* Provide initial support for `JSON Feed_`. 
+
+    The JSON Feed format is a pragmatic syndication format, like RSS and Atom, but with one big difference: it’s JSON instead of XML.  
+
+.. _`JSON Feed` : https://jsonfeed.org/version/1
+
+
 0.0.7 (2017-05-22)
 ------------------
 * Support for Django 1.11 and Wagtail 1.10.1
