@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-30 17:50+0300\n"
+"POT-Creation-Date: 2018-01-30 19:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,3 +96,11 @@ msgstr "Image RSS en el contenido"
 #: models.py:73
 msgid "Add feed image to content encoded field"
 msgstr "Añadir una imagen RSS al campo contenido codificado"
+
+#: models.py:78
+msgid "RSS feed setting"
+msgstr "Configuración del alimentador RSS"
+
+#: models.py:79
+msgid "RSS feed settings"
+msgstr "Configuraciones del alimentador RSS"

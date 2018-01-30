@@ -73,3 +73,7 @@ class RSSFeedsSettings(BaseSetting):
         help_text=_('Add feed image to content encoded field'),
         default=True
     )
+
+    class Meta:
+        verbose_name = _('RSS feed setting')
+        verbose_name_plural = _('RSS feed settings')
