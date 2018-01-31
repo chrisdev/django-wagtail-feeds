@@ -2,7 +2,9 @@ import json
 from collections import OrderedDict
 from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import (
-    SyndicationFeed, rfc3339_date, Rss201rev2Feed
+    SyndicationFeed,
+    rfc3339_date,
+    Rss201rev2Feed
 )
 from wagtail.wagtailcore.models import Site
 from datetime import datetime, time
@@ -10,9 +12,10 @@ from django.utils.html import strip_tags
 from django.apps import apps
 from wagtail.wagtailcore.rich_text import expand_db_html
 from bs4 import BeautifulSoup
+
 try:
     from urlparse import urljoin
-except ImportError: # pragma: no cover
+except ImportError:  # pragma: no cover
     from urllib.parse import urljoin
 
 from .models import RSSFeedsSettings
@@ -23,18 +26,19 @@ try:
     feed_app_label = feed_app_settings.feed_app_label
     feed_model_name = feed_app_settings.feed_model_name
     use_feed_image = feed_app_settings.feed_image_in_content
-except: # pragma: no cover
+except:  # pragma: no cover
     feed_app_settings = None
 
 try:
-    feed_model = apps.get_model(app_label=feed_app_label,
-                                model_name=feed_model_name)
-except: # pragma: no cover
+    feed_model = apps.get_model(
+        app_label=feed_app_label,
+        model_name=feed_model_name
+    )
+except:  # pragma: no cover
     feed_model = None
 
 
 class CustomFeedGenerator(Rss201rev2Feed):
-
     def root_attributes(self):
         attrs = super(CustomFeedGenerator, self).root_attributes()
         attrs['xmlns:content'] = 'http://purl.org/rss/1.0/modules/content/'
@@ -60,7 +64,6 @@ class CustomFeedGenerator(Rss201rev2Feed):
 
 
 class JSONFeed(SyndicationFeed):
-
     content_type = 'application/json; charset=utf-8'
 
     def write(self, outfile, encoding):
@@ -117,7 +120,6 @@ class JSONFeed(SyndicationFeed):
 
 
 class BasicFeed(Feed):
-
     # FEED TYPE
     feed_type = Rss201rev2Feed
 
@@ -147,7 +149,6 @@ class BasicFeed(Feed):
 
 
 class BasicJsonFeed(BasicFeed):
-
     # FEED TYPE
     feed_type = JSONFeed
 
@@ -156,7 +157,6 @@ class BasicJsonFeed(BasicFeed):
 
 
 class ExtendedFeed(Feed):
-
     # FEED TYPE
     feed_type = CustomFeedGenerator
 
@@ -238,6 +238,5 @@ class ExtendedFeed(Feed):
 
 
 class ExtendedJsonFeed(ExtendedFeed):
-
     # FEED TYPE
     feed_type = JSONFeed
