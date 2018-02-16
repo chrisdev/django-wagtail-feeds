@@ -30,6 +30,8 @@ try:
     is_date_field_datetime = feed_app_settings.is_feed_item_date_field_datetime
 except:  # pragma: no cover
     feed_app_settings = None
+    feed_item_date_field = None
+    is_date_field_datetime = None
 
 try:
     feed_model = apps.get_model(
