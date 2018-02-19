@@ -73,6 +73,17 @@ class RSSFeedsSettings(BaseSetting):
         help_text=_('Add feed image to content encoded field'),
         default=True
     )
+    feed_item_date_field = models.CharField(
+        _('Feed item date field'),
+        max_length=255,
+        help_text=_('(Optional). Date Field for feed item. By default use date'),
+        blank=True
+    )
+    is_feed_item_date_field_datetime = models.BooleanField(
+        _('Is Feed item date field Datetime Field'),
+        help_text=_('If the above date field is DateTime field, tick this.'),
+        default=False
+    )
 
     class Meta:
         verbose_name = _('RSS feed setting')

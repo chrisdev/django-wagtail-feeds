@@ -26,8 +26,12 @@ try:
     feed_app_label = feed_app_settings.feed_app_label
     feed_model_name = feed_app_settings.feed_model_name
     use_feed_image = feed_app_settings.feed_image_in_content
+    feed_item_date_field = feed_app_settings.feed_item_date_field
+    is_date_field_datetime = feed_app_settings.is_feed_item_date_field_datetime
 except:  # pragma: no cover
     feed_app_settings = None
+    feed_item_date_field = None
+    is_date_field_datetime = None
 
 try:
     feed_model = apps.get_model(
@@ -136,10 +140,21 @@ class BasicFeed(Feed):
         item_content_field = feed_app_settings.feed_item_content_field
 
     def items(self):
-        return feed_model.objects.order_by('-date').live()
+        if feed_item_date_field:
+            return feed_model.objects.live().order_by(
+                '-' + feed_item_date_field)
+        else:
+            return feed_model.objects.live().order_by('-date')
 
     def item_pubdate(self, item):
-        return datetime.combine(item.date, time())
+        if feed_item_date_field:
+            if is_date_field_datetime:
+                return getattr(item, feed_item_date_field)
+            else:
+                return datetime.combine(
+                    getattr(item, feed_item_date_field), time())
+        else:
+            return datetime.combine(item.date, time())
 
     def item_link(self, item):
         return item.full_url
@@ -177,10 +192,21 @@ class ExtendedFeed(Feed):
         return site.root_url
 
     def items(self):
-        return feed_model.objects.order_by('-date').live()
+        if feed_item_date_field:
+            return feed_model.objects.live().order_by(
+                '-' + feed_item_date_field)
+        else:
+            return feed_model.objects.live().order_by('-date')
 
     def item_pubdate(self, item):
-        return datetime.combine(item.date, time())
+        if feed_item_date_field:
+            if is_date_field_datetime:
+                return getattr(item, feed_item_date_field)
+            else:
+                return datetime.combine(
+                    getattr(item, feed_item_date_field), time())
+        else:
+            return datetime.combine(item.date, time())
 
     def item_title(self, item):
         return item.title
