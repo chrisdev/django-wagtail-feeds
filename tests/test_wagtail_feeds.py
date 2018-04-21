@@ -1,10 +1,10 @@
 from django.test import TestCase
 from django.apps import apps
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
-from wagtail.wagtailcore.rich_text import RichText
-from wagtail.wagtailcore.models import Collection, Page
-from wagtail.wagtailimages.tests.utils import Image, get_test_image_file
+from wagtail.core.rich_text import RichText
+from wagtail.core.models import Collection, Page
+from wagtail.images.tests.utils import Image, get_test_image_file
 
 from wagtail_feeds.models import RSSFeedsSettings
 from wagtail_feeds.feeds import (
