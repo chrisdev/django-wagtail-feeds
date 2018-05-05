@@ -8,22 +8,22 @@ script:
 
 matrix:
   include:
-    - env: TOXENV=py34-django20
-      python: 3.4
-    - TOXENV=py34-django_trunk
-      python: 3.4
-    - TOXENV=py35-django11
-      python: 3.5
-    - TOXENV=py35-django20
-      python: 3.5
-    - TOXENV=py35-django_trunk
-      python: 3.5
-    - TOXENV=py36-django11
-      python: 3.6
-    - TOXENV=py36-django20
-      python: 3.6
-    - TOXENV=py36-django_trunk
-      python: 3.6
+   - env: TOXENV=py34-django20
+     python: 3.4
+   - env: TOXENV=py34-django_trunk
+     python: 3.4
+   - env: TOXENV=py35-django11
+     python: 3.5
+   - env: TOXENV=py35-django20
+     python: 3.5
+   - env: TOXENV=py35-django_trunk
+     python: 3.5
+   - env: TOXENV=py36-django11
+     python: 3.6
+   - env: TOXENV=py36-django20
+     python: 3.6
+   - env: TOXENV=py36-django_trunk
+     python: 3.6
   allow_failures:
     - env: TOXENV=py34-django_trunk
     - env: TOXENV=py35-django11
