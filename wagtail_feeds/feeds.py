@@ -6,11 +6,18 @@ from django.utils.feedgenerator import (
     rfc3339_date,
     Rss201rev2Feed
 )
-from wagtail.core.models import Site
+
+from wagtail import VERSION as WAGTAIL_VERSION
+if WAGTAIL_VERSION >= (2, 0):
+    from wagtail.core.models import Site
+    from wagtail.core.rich_text import expand_db_html
+else:
+    from wagtail.wagtailcore.models import Site
+    from wagtail.wagtailcore.rich_text import expand_db_html
+
 from datetime import datetime, time
 from django.utils.html import strip_tags
 from django.apps import apps
-from wagtail.core.rich_text import expand_db_html
 from bs4 import BeautifulSoup
 
 try:
