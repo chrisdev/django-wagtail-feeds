@@ -1,9 +1,14 @@
 =======
 History
 =======
+
+0.1.0 (2018-05-8)
+-----------------
+* Adds support for Django 2+ and Wagtail 2+. This release breaks backward compatibility  with versions of Wagtail which are based on Wagtail/Django 1.x. Use 0.0.8 for projects based on older versions of Wagtail 
+
 0.0.8 (2017-06-26)
 ------------------
-* Provide initial support for `JSON Feed_`. 
+* Provide initial support for `JSON Feed_`.
 
     The JSON Feed format is a pragmatic syndication format, like RSS and Atom, but with one big difference: it’s JSON instead of XML.  
 

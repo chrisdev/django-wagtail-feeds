@@ -23,9 +23,12 @@ JSON feed come in two flavors:
 Getting Started
 ---------------
 
+**The latest release (0.1.0) breaks backward compatibility  with previous versions of Wagtail which were baseed Django 1.x. Use 0.0.8 for projects based on older versions of Wagtail**
+
 To use Django Wagtail Feeds in a project::
 
     pip install django-wagtail-feeds
+
 
 Remember to add ``wagtail_feeds`` to installed apps in settings file.
 
