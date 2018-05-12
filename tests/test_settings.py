@@ -10,16 +10,16 @@ INSTALLED_APPS = (
     'wagtail.contrib.settings',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.table_block',
-    'wagtail.wagtailforms',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtailcore',
+    'wagtail.contrib.forms',
+    'wagtail.search',
+    'wagtail.embeds',
+    'wagtail.images',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.admin',
+    'wagtail.core',
 
     'taggit',
 
@@ -44,7 +44,7 @@ if django.VERSION >= (1, 10):
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-        'wagtail.wagtailcore.middleware.SiteMiddleware',
+        'wagtail.core.middleware.SiteMiddleware',
     )
 else:
     MIDDLEWARE_CLASSES = (
@@ -56,7 +56,7 @@ else:
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-        'wagtail.wagtailcore.middleware.SiteMiddleware',
+        'wagtail.core.middleware.SiteMiddleware',
     )
 
 

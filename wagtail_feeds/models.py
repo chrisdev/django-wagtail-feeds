@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from modelcluster.fields import ParentalKey
 
 from wagtail.contrib.settings.models import (
     BaseSetting,
@@ -30,21 +29,6 @@ class FeedApp(models.Model):
         null=True,
         blank=True
     )
-
-    class Meta:
-        abstract = True
-
-
-class RSSFeedRelatedFeedApp(Orderable, FeedApp):
-    app = ParentalKey(
-        'wagtail_feeds.RSSFeedsSettings',
-        related_name='feed_apps',
-        on_delete=models.CASCADE,
-    )
-
-
-@register_setting
-class RSSFeedsSettings(BaseSetting):
     feed_title = models.CharField(
         _('Feed title'), max_length=255, help_text=_('Title of Feed'), null=True, blank=True
     )
@@ -92,20 +76,18 @@ class RSSFeedsSettings(BaseSetting):
         help_text=_('Add feed image to content encoded field'),
         default=True
     )
-
-    content_panels = [
-        InlinePanel('feed_apps', label=_('Feed apps')),
-        FieldPanel('feed_title'),
-        FieldPanel('feed_link'),
-        FieldPanel('feed_description'),
-        FieldPanel('feed_author_email'),
-        FieldPanel('feed_author_link'),
-        FieldPanel('feed_item_description_field'),
-        FieldPanel('feed_item_content_field'),
-        FieldPanel('feed_image_in_content'),
-    ]
+    feed_item_date_field = models.CharField(
+        _('Feed item date field'),
+        max_length=255,
+        help_text=_('(Optional). Date Field for feed item. By default use date'),
+        blank=True
+    )
+    is_feed_item_date_field_datetime = models.BooleanField(
+        _('Is Feed item date field Datetime Field'),
+        help_text=_('If the above date field is DateTime field, tick this.'),
+        default=False
+    )
 
     class Meta:
         verbose_name = _('RSS feed setting')
         verbose_name_plural = _('RSS feed settings')
-

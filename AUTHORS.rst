@@ -11,3 +11,5 @@ Contributors
 ------------
 
 * Parbhat Puri <me@parbhatpuri.com>
+
+* Michael Noronha <mnoronha@uchicago.edu>

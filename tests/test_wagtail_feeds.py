@@ -1,10 +1,10 @@
 from django.test import TestCase
 from django.apps import apps
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
-from wagtail.wagtailcore.rich_text import RichText
-from wagtail.wagtailcore.models import Collection, Page
-from wagtail.wagtailimages.tests.utils import Image, get_test_image_file
+from wagtail.core.rich_text import RichText
+from wagtail.core.models import Collection, Page
+from wagtail.images.tests.utils import Image, get_test_image_file
 
 from wagtail_feeds.models import RSSFeedsSettings
 from wagtail_feeds.feeds import (
@@ -48,7 +48,9 @@ class WagtailFeedTests(TestCase):
             feed_description="Test Description",
             feed_item_description_field="intro",
             feed_item_content_field="body",
-            feed_image_in_content=True
+            feed_image_in_content=True,
+            feed_item_date_field='date',
+            is_feed_item_date_field_datetime=False,
         )
 
         # Create collection for image

@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-30 19:48+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: models.py:16
+msgid "Feed app label"
+msgstr ""
+
+#: models.py:18
+msgid "blog App whose Feed is to be generated"
+msgstr ""
+
+#: models.py:23
+msgid "Feed model name"
+msgstr ""
+
+#: models.py:25
+msgid "Model to be used for feed generation"
+msgstr ""
+
+#: models.py:30
+msgid "Feed title"
+msgstr ""
+
+#: models.py:30
+msgid "Title of Feed"
+msgstr ""
+
+#: models.py:33
+msgid "Feed link"
+msgstr ""
+
+#: models.py:33
+msgid "link for Feed"
+msgstr ""
+
+#: models.py:36
+msgid "Feed description"
+msgstr ""
+
+#: models.py:38
+msgid "Description of field"
+msgstr ""
+
+#: models.py:43
+msgid "Feed author email"
+msgstr ""
+
+#: models.py:45
+msgid "Email of author"
+msgstr ""
+
+#: models.py:50
+msgid "Feed author link"
+msgstr ""
+
+#: models.py:52
+msgid "Link of author"
+msgstr ""
+
+#: models.py:58
+msgid "Feed item description field"
+msgstr ""
+
+#: models.py:60
+msgid "Description field for feed item"
+msgstr ""
+
+#: models.py:65
+msgid "Feed item content field"
+msgstr ""
+
+#: models.py:67
+msgid "Content Field for feed item"
+msgstr ""
+
+#: models.py:72
+msgid "Feed image in content"
+msgstr ""
+
+#: models.py:73
+msgid "Add feed image to content encoded field"
+msgstr ""
+
+#: models.py:78
+msgid "RSS feed settings"
+msgstr ""
