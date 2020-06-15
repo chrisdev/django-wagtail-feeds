@@ -90,7 +90,7 @@ class JSONFeed(SyndicationFeed):
 
         data['items'] = item_element
 
-        outfile.write(json.dumps(data, encoding=encoding))
+        outfile.write(json.dumps(data))
 
     def add_item_elements(self, item):
         item_elements = OrderedDict()
