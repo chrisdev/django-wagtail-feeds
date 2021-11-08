@@ -6,12 +6,15 @@ from wagtail.contrib.settings.models import (
     register_setting
 )
 
-
 # Create your models here.
+from wagtail.wagtailadmin.edit_handlers import (
+    InlinePanel,
+    FieldPanel
+)
+from wagtail.wagtailcore.models import Orderable
 
 
-@register_setting
-class RSSFeedsSettings(BaseSetting):
+class FeedApp(models.Model):
     feed_app_label = models.CharField(
         _('Feed app label'),
         max_length=255,
