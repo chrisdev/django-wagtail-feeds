@@ -2,13 +2,15 @@
 History
 =======
 
-Unreleased compatibility checkpoint
-----------------------------------
+0.1.1.dev0 (unreleased compatibility checkpoint)
+----------------------------------------------
 * Use current Wagtail namespaces on Wagtail 3+, retaining earlier import branches.
 * Prefer BaseSiteSetting with a fallback for Wagtail before 4.0.
 * Use gettext_lazy for compatibility with Django's removed translation alias.
 * Refresh the test suite for modern Wagtail, in-memory SQLite and temporary media.
 * Validate on Django 3.2.25 with Wagtail 4.1.9 and 5.2.8; no PyPI release made.
+* Give the source build a distinct development version so pip replaces an
+  installed 0.1.0 when installing the pinned compatibility commit.
 
 0.1.0 (2018-05-8)
 -----------------

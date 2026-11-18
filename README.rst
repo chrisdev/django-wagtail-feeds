@@ -27,6 +27,8 @@ The ``codex/wagtail-5-compat`` branch updates removed Wagtail namespace imports,
 uses ``BaseSiteSetting`` where available (with a fallback for earlier Wagtail),
 and uses Django's ``gettext_lazy``. No feed format or configuration behaviour is
 changed. This is a source compatibility checkpoint, not a new PyPI release.
+Its development version is ``0.1.1.dev0`` so installers distinguish it from
+the existing ``0.1.0`` release.
 
 Eight package tests pass on Python 3.8.10 / Django 3.2.25 with both Wagtail
 4.1.9 and 5.2.8. They include feed properties, StreamField content, absolute
