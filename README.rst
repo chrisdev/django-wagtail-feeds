@@ -27,11 +27,12 @@ The ``codex/wagtail-5-compat`` branch updates removed Wagtail namespace imports,
 uses ``BaseSiteSetting`` where available (with a fallback for earlier Wagtail),
 and uses Django's ``gettext_lazy``. No feed format or configuration behaviour is
 changed. This is a source compatibility checkpoint, not a new PyPI release.
-Its development version is ``0.1.1.dev0`` so installers distinguish it from
+Its development version is ``0.1.1.dev1`` so installers distinguish it from
 the existing ``0.1.0`` release.
 
-Eight package tests pass on Python 3.8.10 / Django 3.2.25 with both Wagtail
-4.1.9 and 5.2.8. They include feed properties, StreamField content, absolute
+The earlier eight-test checkpoint passed on Python 3.8.10 / Django 3.2.25
+with both Wagtail 4.1.9 and 5.2.8. The Django 4 follow-up has nine tests passing
+on Wagtail 5.2.8 with Django 3.2.25 and 4.2.30. They include feed properties, StreamField content, absolute
 inline image URLs and the feed image. Tests use an in-memory SQLite database
 and temporary media via ``python runtests.py``. Imports and fixtures in the
 test suite now target modern Wagtail; other historical combinations have not
@@ -40,6 +41,11 @@ exercise basic/extended RSS output, live filtering, ordering, URLs and dates.
 
 Site/feed settings are still captured at module import. Restart the application
 after changing them; changing that behaviour is outside this compatibility fix.
+
+The Django 4 follow-up closes the XML writer's pending ``content:encoded`` start
+tag before writing CDATA. It preserves the existing CDATA representation while
+avoiding malformed RSS with Django's short-empty-element writer. A regression
+test parses the generated feed and checks its embedded HTML and image content.
 
 Getting Started
 ---------------

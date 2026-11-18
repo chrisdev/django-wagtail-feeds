@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.apps import apps
 from django.urls import reverse
 from unittest.mock import patch
+from xml.etree import ElementTree
 
 from wagtail.rich_text import RichText
 from wagtail.models import Collection, Page
@@ -128,6 +129,16 @@ class WagtailFeedTests(TestCase):
         self.assertIn('Rich text', document.get_text())
         self.assertEqual(document.find('img')['src'], feed.get_site_url() + '/media/images/wagtail.original.jpg')
         self.assertFalse(document.select_one('.responsive-object').has_attr('style'))
+
+    def test_extended_rss_cdata_remains_well_formed_with_short_empty_elements(self):
+        from wagtail_feeds import feeds
+        feed = feeds.CustomFeedGenerator(title='Sample', link='https://example.invalid/', description='Sample feed')
+        feed.add_item(title='Item', link='https://example.invalid/item/', description='Summary', image='https://example.invalid/photo.jpg', content='<p>Caption &amp; content</p>')
+        with patch.object(feeds, 'use_feed_image', True, create=True):
+            rendered = feed.writeString('utf-8')
+        self.assertIn('<![CDATA[', rendered)
+        content = ElementTree.fromstring(rendered).findtext('./channel/item/{http://purl.org/rss/1.0/modules/content/}encoded')
+        self.assertEqual(content, '<img src="https://example.invalid/photo.jpg"><hr><p>Caption &amp; content</p>')
 
     def test_blog_values(self):
         blog = BlogPage.objects.first()

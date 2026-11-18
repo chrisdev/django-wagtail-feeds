@@ -2,6 +2,14 @@
 History
 =======
 
+0.1.1.dev1 (unreleased Django 4 compatibility)
+-------------------------------------------
+* Close the pending XML start tag before emitting raw CDATA, retaining valid
+  extended RSS under Django 4's short-empty-element writer.
+* Replace removed django.conf.urls.url in the package test URL configuration.
+* Nine tests pass on Wagtail 5.2.8 with Django 3.2.25 and 4.2.30.
+* No PyPI release made.
+
 0.1.1.dev0 (unreleased compatibility checkpoint)
 ----------------------------------------------
 * Use current Wagtail namespaces on Wagtail 3+, retaining earlier import branches.

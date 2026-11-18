@@ -72,6 +72,9 @@ class CustomFeedGenerator(Rss201rev2Feed):
         # for Feedburner and other services. If we use
         # handler.characters(content) then it will escape content and will not
         # work perfectly with Feedburner and other services.
+        # Django 4 uses short empty elements: close the pending start tag before
+        # writing raw CDATA, otherwise it produces <content:encoded<![CDATA[... .
+        handler._finish_pending_start_element()
         handler._write(content)
 
         handler.endElement(u"content:encoded")
