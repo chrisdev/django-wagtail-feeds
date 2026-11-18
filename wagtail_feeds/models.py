@@ -1,17 +1,18 @@
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
-from wagtail.contrib.settings.models import (
-    BaseSetting,
-    register_setting
-)
+from wagtail.contrib.settings.models import register_setting
+try:
+    from wagtail.contrib.settings.models import BaseSiteSetting
+except ImportError:  # Wagtail versions before 4.0
+    from wagtail.contrib.settings.models import BaseSetting as BaseSiteSetting
 
 
 # Create your models here.
 
 
 @register_setting
-class RSSFeedsSettings(BaseSetting):
+class RSSFeedsSettings(BaseSiteSetting):
     feed_app_label = models.CharField(
         _('Feed app label'),
         max_length=255,

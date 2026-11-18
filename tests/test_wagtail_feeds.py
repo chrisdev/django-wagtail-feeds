@@ -1,9 +1,10 @@
 from django.test import TestCase
 from django.apps import apps
 from django.urls import reverse
+from unittest.mock import patch
 
-from wagtail.core.rich_text import RichText
-from wagtail.core.models import Collection, Page
+from wagtail.rich_text import RichText
+from wagtail.models import Collection, Page
 from wagtail.images.tests.utils import Image, get_test_image_file
 
 from wagtail_feeds.models import RSSFeedsSettings
@@ -114,6 +115,19 @@ class WagtailFeedTests(TestCase):
         self.assertEqual(feed_settings.feed_title, 'Test Feed')
         self.assertEqual(feed_settings.feed_item_description_field, 'intro')
         self.assertEqual(feed_settings.feed_item_content_field, 'body')
+
+    def test_extended_content_preserves_feed_image_and_absolute_inline_images(self):
+        from wagtail_feeds import feeds
+        from bs4 import BeautifulSoup
+        page = BlogStreamPage.objects.first()
+        feed = ExtendedFeed()
+        with patch.object(feeds, 'use_feed_image', True, create=True), patch.object(ExtendedFeed, 'item_content_field', 'body', create=True):
+            extra = feed.item_extra_kwargs(page)
+        self.assertEqual(extra['image'], feed.get_site_url() + page.feed_image.file.url)
+        document = BeautifulSoup(extra['content'], 'html.parser')
+        self.assertIn('Rich text', document.get_text())
+        self.assertEqual(document.find('img')['src'], feed.get_site_url() + '/media/images/wagtail.original.jpg')
+        self.assertFalse(document.select_one('.responsive-object').has_attr('style'))
 
     def test_blog_values(self):
         blog = BlogPage.objects.first()

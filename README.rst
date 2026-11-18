@@ -20,6 +20,25 @@ JSON feed come in two flavors:
 .. _`JSON feed` : https://jsonfeed.org/version/1
 
 
+Compatibility checkpoint (unreleased)
+------------------------------------
+
+The ``codex/wagtail-5-compat`` branch updates removed Wagtail namespace imports,
+uses ``BaseSiteSetting`` where available (with a fallback for earlier Wagtail),
+and uses Django's ``gettext_lazy``. No feed format or configuration behaviour is
+changed. This is a source compatibility checkpoint, not a new PyPI release.
+
+Eight package tests pass on Python 3.8.10 / Django 3.2.25 with both Wagtail
+4.1.9 and 5.2.8. They include feed properties, StreamField content, absolute
+inline image URLs and the feed image. Tests use an in-memory SQLite database
+and temporary media via ``python runtests.py``. Imports and fixtures in the
+test suite now target modern Wagtail; other historical combinations have not
+been revalidated. The Ministry application's PostgreSQL integration tests also
+exercise basic/extended RSS output, live filtering, ordering, URLs and dates.
+
+Site/feed settings are still captured at module import. Restart the application
+after changing them; changing that behaviour is outside this compatibility fix.
+
 Getting Started
 ---------------
 

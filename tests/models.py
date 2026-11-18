@@ -2,9 +2,9 @@ from __future__ import absolute_import, unicode_literals
 
 from django.db import models
 
-from wagtail.core import blocks
-from wagtail.core.models import Page
-from wagtail.core.fields import RichTextField, StreamField
+from wagtail import blocks
+from wagtail.models import Page
+from wagtail.fields import RichTextField, StreamField
 from wagtail.images.blocks import ImageChooserBlock
 
 
@@ -32,7 +32,7 @@ class BlogStreamPage(Page):
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
-    ])
+    ], use_json_field=True)
     date = models.DateField("Post date")
 
     feed_image = models.ForeignKey(

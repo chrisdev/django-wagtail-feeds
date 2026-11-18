@@ -2,6 +2,7 @@
 
 import os
 import sys
+from tempfile import TemporaryDirectory
 
 import django
 from django.conf import settings
@@ -13,7 +14,9 @@ def runtests():
     django.setup()
     TestRunner = get_runner(settings)
     test_runner = TestRunner()
-    failures = test_runner.run_tests(["tests"])
+    with TemporaryDirectory(prefix='wagtail-feeds-tests-') as media:
+        settings.MEDIA_ROOT = media
+        failures = test_runner.run_tests(["tests"])
     sys.exit(bool(failures))
 
 
