@@ -25,7 +25,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
 
     'wagtail.contrib.settings',
-    'wagtail.contrib.modeladmin',
     'wagtail.contrib.table_block',
     'wagtail.contrib.forms',
     'wagtail.search',
